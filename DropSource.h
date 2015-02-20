@@ -7,8 +7,8 @@ public:
 	CDropSource();
 	~CDropSource();
 
-	HRESULT STDMETHODCALLTYPE QueryContinueDrag(BOOL, DWORD){ return 0xdeadbeef; }
-	HRESULT STDMETHODCALLTYPE GiveFeedback(DWORD){ return E_NOTIMPL; }
+	HRESULT STDMETHODCALLTYPE QueryContinueDrag(BOOL, DWORD);
+	HRESULT STDMETHODCALLTYPE GiveFeedback(DWORD);
 
 	//---------IUnknown------
 	//Hack, only for test

@@ -45,17 +45,16 @@ HRESULT ISimpleDrag::DragLeave()
 INT_PTR main_dialog::handle(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	POINT p = lp2p(lParam);
-	static WCHAR buff[1025];
+	//static WCHAR buff[1025];
 	HRESULT hres;
 	DWORD dresult;
 
 	switch (message) {
 	case WM_LBUTTONDOWN:
 		dresult = 0xdeadbeef;
-		//wsprintfW(buff, L"x:%d y:%d", p.x, p.y); MessageBoxW(NULL, buff, NULL, MB_OK);
+		wprintf(L"Click at x:%d y:%d\n", p.x, p.y);
 		hres = DoDragDrop(pdo, pcds, 0, &dresult);
-		wsprintfW(buff, L"hres=%08x, dresult=%08x", hres, dresult); MessageBoxW(NULL, buff, NULL, MB_OK);
-		//
+		wprintf(L"hres=%08x, dresult=%08x\n", hres, dresult);
 		break;
 	case WM_LBUTTONUP:
 		break;

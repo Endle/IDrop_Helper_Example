@@ -21,12 +21,21 @@ CDropTarget::~CDropTarget()
 }
 HRESULT CDropTarget::DragEnter(IDataObject*, DWORD, POINTL, DWORD*)
 {
-	MessageBoxA(NULL, "Enter", NULL, MB_OK);
+	//MessageBoxA(NULL, "Enter", NULL, MB_OK);
 	return S_OK;
 }
 
 HRESULT CDropTarget::DragLeave()
 {
-	MessageBoxA(NULL, "Leave", NULL, MB_OK);
-	return S_FALSE;
+	//exit(0);
+	//MessageBoxA(NULL, "Leave", NULL, MB_OK);
+	//abort();
+	return S_OK;
+}
+
+HRESULT CDropTarget::DragOver(DWORD, POINTL, DWORD*)
+{ 
+	//MessageBoxA(NULL, "DragOver", NULL, MB_OK);
+	return S_OK;
+	//return 0xdeadbeef; 
 }
