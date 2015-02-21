@@ -10,7 +10,7 @@ CDropTarget::CDropTarget(HWND hwnd)
 	_hwnd = hwnd;
 
 	hres = RegisterDragDrop(hwnd, this);
-	if (FAILED(hres)) MessageBoxA(NULL, "FAIL", NULL, MB_OK);
+	if (FAILED(hres)) MessageBoxA(NULL, "CDropTarget Contructor FAIL", NULL, MB_OK);
 }
 
 
@@ -21,21 +21,18 @@ CDropTarget::~CDropTarget()
 }
 HRESULT CDropTarget::DragEnter(IDataObject*, DWORD, POINTL, DWORD*)
 {
-	//MessageBoxA(NULL, "Enter", NULL, MB_OK);
+	printf("CDropTarget Enter\n");
 	return S_OK;
 }
 
 HRESULT CDropTarget::DragLeave()
 {
-	//exit(0);
-	//MessageBoxA(NULL, "Leave", NULL, MB_OK);
-	//abort();
+	printf("CDropTarget Leave\n");
 	return S_OK;
 }
 
-HRESULT CDropTarget::DragOver(DWORD, POINTL, DWORD*)
+HRESULT CDropTarget::DragOver(DWORD, POINTL point, DWORD*)
 { 
-	//MessageBoxA(NULL, "DragOver", NULL, MB_OK);
+	printf("CDropTarget Over (%d, %d)\n",  point.x, point.y);
 	return S_OK;
-	//return 0xdeadbeef; 
 }

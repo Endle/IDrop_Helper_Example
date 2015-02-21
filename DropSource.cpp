@@ -8,10 +8,10 @@ HRESULT CDropSource::GiveFeedback(DWORD dwEffect)
 
 HRESULT CDropSource::QueryContinueDrag(BOOL escPressed, DWORD keyState)
 {
-	//if (keyState & MK_CONTROL)
-	//	MessageBoxA(NULL, "Query, Control pressed", NULL, MB_OK);
+	if (escPressed)
+		return DRAGDROP_S_CANCEL;
 
-	if (keyState & MK_CONTROL)
+	if (keyState & MK_LBUTTON)
 		return S_OK;
 	else
 		return DRAGDROP_S_DROP;

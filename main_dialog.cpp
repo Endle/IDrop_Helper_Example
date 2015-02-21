@@ -29,7 +29,7 @@ main_dialog::~main_dialog()
 
 HRESULT ISimpleDrag::DragEnter(HWND, IDataObject *, POINT *, DWORD)
 {
-	MessageBoxA(NULL, "Enter", NULL, MB_OK);
+	printf("Enter");
 	return S_OK; 
 }
 HRESULT ISimpleDrag::DragOver(POINT *p , DWORD dwEffect)
@@ -38,7 +38,7 @@ HRESULT ISimpleDrag::DragOver(POINT *p , DWORD dwEffect)
 }
 HRESULT ISimpleDrag::DragLeave()
 {
-	MessageBoxA(NULL, "Leave", NULL, MB_OK);
+	printf("Leave\n");
 	return S_FALSE; 
 }
 
