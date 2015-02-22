@@ -5,7 +5,9 @@ CDropTarget::CDropTarget(HWND hwnd)
 {
 	HRESULT hres;
 
-	CoCreateInstance(CLSID_DragDropHelper, NULL, CLSCTX_INPROC_SERVER, IID_IDropTargetHelper, (void**)&idth);
+	idth = NULL;
+	hres = CoCreateInstance(CLSID_DragDropHelper, NULL, CLSCTX_INPROC_SERVER, IID_IDropTargetHelper, (void**)&idth);
+	printf("CoCreateInstance IDropTargetHelper: hres = %08x, got %p\n", hres, idth);
 
 	_hwnd = hwnd;
 
