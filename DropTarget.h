@@ -34,6 +34,7 @@ public:
 	}
 private:
 	IDropTargetHelper *idth;
+	IDataObject		  *ido;
 	HWND _hwnd;
 };
 

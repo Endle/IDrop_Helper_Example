@@ -1,7 +1,7 @@
 #include "DropTarget.h"
 
 
-CDropTarget::CDropTarget(HWND hwnd)
+CDropTarget::CDropTarget(HWND hwnd) :ido(NULL)
 {
 	HRESULT hres;
 
@@ -24,21 +24,36 @@ CDropTarget::~CDropTarget()
 	idth->Release();
 	//printf("RevokeDragDrop hres = %08x, hwnd = %08x\n", hres, _hwnd);
 }
-HRESULT CDropTarget::DragEnter(IDataObject*, DWORD, POINTL, DWORD*)
+HRESULT CDropTarget::DragEnter(IDataObject* pdo, DWORD keys, POINTL pointl, DWORD* effect)
 {
-	printf("CDropTarget Enter\n");
+	POINT pt = { pointl.x, pointl.y };
+	HRESULT hres = 0xdeadbeef;
+	printf("CDropTarget Enter (%d, %d)\n", pointl.x, pointl.y);
+
+	hres = idth->DragEnter(_hwnd, pdo, &pt, *effect);
+	printf("IDropTaretHelper::DragEnter %08x\n", hres);
 	return S_OK;
 }
 
 HRESULT CDropTarget::DragLeave()
 {
 	printf("CDropTarget Leave\n");
+	HRESULT hres = 0xdeadbeef;
+
+	hres = idth->DragLeave();
+	printf("IDropTaretHelper::DragLeave %08x\n", hres);
 	return S_OK;
 }
 
-HRESULT CDropTarget::DragOver(DWORD, POINTL point, DWORD*)
-{ 
-	printf("CDropTarget Over (%d, %d)\n",  point.x, point.y);
+HRESULT CDropTarget::DragOver(DWORD, POINTL pointl, DWORD* effect)
+{
+	POINT pt = { pointl.x, pointl.y };
+	printf("CDropTarget Over (%d, %d)\n",  pointl.x, pointl.y);
+
+	HRESULT hres = 0xdeadbeef;
+
+	hres = idth->DragOver(&pt, *effect);
+	printf("IDropTaretHelper::DragOver %08x\n", hres);
 	return S_OK;
 }
 
