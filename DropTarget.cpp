@@ -10,14 +10,17 @@ CDropTarget::CDropTarget(HWND hwnd)
 	_hwnd = hwnd;
 
 	hres = RegisterDragDrop(hwnd, this);
-	if (FAILED(hres)) MessageBoxA(NULL, "CDropTarget Contructor FAIL", NULL, MB_OK);
+	printf("CDropTarget Contructor RegisterDragDrop, hres = %08x, hwnd = %08x\n", hres, hwnd);
 }
 
 
 CDropTarget::~CDropTarget()
 {
-	RevokeDragDrop(_hwnd);
+	printf("CDropTarget Destructor\n");
+	HRESULT hres;
+	//hres = RevokeDragDrop(_hwnd);
 	idth->Release();
+	//printf("RevokeDragDrop hres = %08x, hwnd = %08x\n", hres, _hwnd);
 }
 HRESULT CDropTarget::DragEnter(IDataObject*, DWORD, POINTL, DWORD*)
 {
@@ -34,5 +37,11 @@ HRESULT CDropTarget::DragLeave()
 HRESULT CDropTarget::DragOver(DWORD, POINTL point, DWORD*)
 { 
 	printf("CDropTarget Over (%d, %d)\n",  point.x, point.y);
+	return S_OK;
+}
+
+HRESULT CDropTarget::Drop(IDataObject*, DWORD, POINTL point, DWORD*)
+{
+	printf("CDropTarget Drop (%d, %d)\n", point.x, point.y);
 	return S_OK;
 }
