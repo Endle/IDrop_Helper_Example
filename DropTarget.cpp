@@ -30,7 +30,7 @@ HRESULT CDropTarget::DragEnter(IDataObject* pdo, DWORD keys, POINTL pointl, DWOR
 	HRESULT hres = 0xdeadbeef;
 	printf("CDropTarget Enter (%d, %d)\n", pointl.x, pointl.y);
 
-	hres = idth->DragEnter(_hwnd, pdo, &pt, *effect);
+	hres = idth->DragEnter(_hwnd+1, pdo, &pt, *effect);
 	printf("IDropTaretHelper::DragEnter %08x\n", hres);
 	return S_OK;
 }

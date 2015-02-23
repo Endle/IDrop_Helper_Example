@@ -27,20 +27,6 @@ main_dialog::~main_dialog()
 	delete pdo;
 }
 
-HRESULT ISimpleDrag::DragEnter(HWND, IDataObject *, POINT *, DWORD)
-{
-	printf("Enter");
-	return S_OK; 
-}
-HRESULT ISimpleDrag::DragOver(POINT *p , DWORD dwEffect)
-{
-	return S_FALSE; 
-}
-HRESULT ISimpleDrag::DragLeave()
-{
-	printf("Leave\n");
-	return S_FALSE; 
-}
 
 INT_PTR main_dialog::handle(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
