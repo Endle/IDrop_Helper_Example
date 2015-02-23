@@ -41,7 +41,7 @@ HRESULT CDropTarget::DragLeave()
 	HRESULT hres = 0xdeadbeef;
 
 	hres = idth->DragLeave();
-	printf("IDropTaretHelper::DragLeave %08x\n", hres);
+	if(FAILED(hres)) printf("IDropTaretHelper::DragLeave %08x\n", hres);
 	return S_OK;
 }
 
@@ -53,7 +53,7 @@ HRESULT CDropTarget::DragOver(DWORD, POINTL pointl, DWORD* effect)
 	HRESULT hres = 0xdeadbeef;
 
 	hres = idth->DragOver(&pt, *effect);
-	printf("IDropTaretHelper::DragOver %08x\n", hres);
+	if (FAILED(hres))  printf("IDropTaretHelper::DragOver %08x\n", hres);
 	return S_OK;
 }
 
