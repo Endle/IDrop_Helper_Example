@@ -62,3 +62,9 @@ HRESULT CDropTarget::Drop(IDataObject*, DWORD, POINTL point, DWORD*)
 	printf("CDropTarget Drop (%d, %d)\n", point.x, point.y);
 	return S_OK;
 }
+
+HRESULT CDropTarget::Show()
+{
+	printf("CDropTarget Show called, stub now\n");
+	return S_OK;
+}

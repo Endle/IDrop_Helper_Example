@@ -194,6 +194,7 @@ INT_PTR CALLBACK MainDialog(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
 		break;
 	case WM_LBUTTONDOWN:
 	case WM_LBUTTONUP:
+	case WM_PAINT:
 		return mdialog.handle(hDlg, message, wParam, lParam);
 		break;
 	}

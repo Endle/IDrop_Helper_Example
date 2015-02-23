@@ -31,11 +31,16 @@ main_dialog::~main_dialog()
 INT_PTR main_dialog::handle(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	POINT p = lp2p(lParam);
-	//static WCHAR buff[1025];
+	HDC hdc;
+	PAINTSTRUCT ps;
 	HRESULT hres;
 	DWORD dresult;
 
 	switch (message) {
+	case WM_PAINT:
+		hdc = BeginPaint(_hwnd, &ps);
+		pcdt->Show();
+		EndPaint(_hwnd, &ps);
 	case WM_LBUTTONDOWN:
 		dresult = 0xdeadbeef;
 		wprintf(L"Click at x:%d y:%d\n", p.x, p.y);
