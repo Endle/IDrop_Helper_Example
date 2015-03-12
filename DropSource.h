@@ -4,9 +4,10 @@ class CDropSource :
 	public IDropSource
 {
 public:
-	CDropSource();
+	CDropSource(IDataObject *pDataObject);
 	~CDropSource();
 
+	
 	HRESULT STDMETHODCALLTYPE QueryContinueDrag(BOOL, DWORD);
 	HRESULT STDMETHODCALLTYPE GiveFeedback(DWORD);
 
@@ -33,4 +34,7 @@ public:
 
 private:
 	IDragSourceHelper *m_pdsh;
+	IDataObject		*pdo;
+	BITMAP	bm;
+	SHDRAGIMAGE sh;
 };

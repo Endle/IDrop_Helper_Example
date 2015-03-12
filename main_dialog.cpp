@@ -14,9 +14,8 @@ main_dialog::main_dialog(HWND hwnd)
 	//wsprintfW(buff, L"hres = %08x", hres); MessageBoxW(NULL, buff, NULL, MB_OK);
 
 	pcdt = new CDropTarget(hwnd);
-	pcds = new CDropSource;
 	pdo = new CDataObject;
-	//wsprintfW(buff, L"pcdt(%p) pcds(%p) pdo(%p)", pcdt, pcds, pdo); MessageBoxW(NULL, buff, NULL, MB_OK);
+	pcds = new CDropSource(pdo);
 }
 
 

@@ -9,6 +9,7 @@ public:
 	main_dialog(HWND);
 	~main_dialog();
 	INT_PTR handle(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+	IDataObject * GetPDO() { return pdo; }
 
 private:
 	HWND _hwnd;
