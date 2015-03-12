@@ -19,6 +19,12 @@ HRESULT CDropSource::QueryContinueDrag(BOOL escPressed, DWORD keyState)
 
 CDropSource::CDropSource()
 {
+	HRESULT hres;
+	hres = CoCreateInstance(CLSID_DragDropHelper, NULL, CLSCTX_INPROC_SERVER,
+		IID_IDragSourceHelper, (LPVOID*)&m_pdsh);
+
+	printf("CoCreateInstance IDragSourceHelper hres: %08x, got %p\n", hres, m_pdsh);
+
 }
 
 

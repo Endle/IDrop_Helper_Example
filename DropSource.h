@@ -1,5 +1,5 @@
 #pragma once
-#include "oleidl.h"
+#include "stdafx.h"
 class CDropSource :
 	public IDropSource
 {
@@ -30,4 +30,7 @@ public:
 		*ppv = NULL;
 		return S_FALSE;
 	}
+
+private:
+	IDragSourceHelper *m_pdsh;
 };
