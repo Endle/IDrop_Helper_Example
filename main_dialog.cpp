@@ -37,9 +37,11 @@ INT_PTR main_dialog::handle(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPara
 
 	switch (message) {
 	case WM_PAINT:
+		pcdt->Show(FALSE);
 		hdc = BeginPaint(_hwnd, &ps);
-		pcdt->Show();
+		
 		EndPaint(_hwnd, &ps);
+		pcdt->Show(TRUE);
 	case WM_LBUTTONDOWN:
 		dresult = 0xdeadbeef;
 		wprintf(L"Click at x:%d y:%d\n", p.x, p.y);

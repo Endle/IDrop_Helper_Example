@@ -63,8 +63,9 @@ HRESULT CDropTarget::Drop(IDataObject*, DWORD, POINTL point, DWORD*)
 	return S_OK;
 }
 
-HRESULT CDropTarget::Show()
+HRESULT CDropTarget::Show(BOOL flag)
 {
-	printf("CDropTarget Show called, stub now\n");
+	printf("CDropTarget Show called, flag = %s\n", flag?"True":"False");
+	idth->Show(flag);
 	return S_OK;
 }

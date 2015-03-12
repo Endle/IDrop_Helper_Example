@@ -11,7 +11,7 @@ public:
 	HRESULT STDMETHODCALLTYPE DragLeave();
 	HRESULT STDMETHODCALLTYPE DragOver(DWORD, POINTL, DWORD*);
 	HRESULT STDMETHODCALLTYPE Drop(IDataObject*, DWORD, POINTL, DWORD*);
-	HRESULT Show();
+	HRESULT Show(BOOL flag);
 
 	//---------IUnknown------
 	//Hack, only for test
