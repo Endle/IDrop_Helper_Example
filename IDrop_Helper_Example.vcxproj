@@ -96,6 +96,10 @@
   <ItemGroup>
     <ResourceCompile Include="drag.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="look.bmp" />
+    <Image Include="look.ico" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

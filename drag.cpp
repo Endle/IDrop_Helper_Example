@@ -12,12 +12,18 @@ HINSTANCE hInst;								// 当前实例
 TCHAR szTitle[MAX_LOADSTRING];					// 标题栏文本
 TCHAR szWindowClass[MAX_LOADSTRING];			// 主窗口类名
 
+HBITMAP HANDLE_BITMAP = (HBITMAP)0xdeadbeef;
+
 // 此代码模块中包含的函数的前向声明: 
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK MainDialog(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
+
+void CreateHB(HINSTANCE hInst) {
+	HANDLE_BITMAP = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BITMAP1));
+}
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -117,9 +123,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
-
-
-
 //
 //  函数:  WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -135,9 +138,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
 	HDC hdc;
+	HINSTANCE hInst;
 
 	switch (message)
 	{
+	case WM_CREATE:
+		SetLastError(0xdeadbeef);
+		hInst = ((LPCREATESTRUCT)lParam)->hInstance;
+		CreateHB(hInst);
+		if (GetLastError() != 0xdeadbeef) {
+			printf("CreateBitmap got %p\n", HANDLE_BITMAP);
+			printf("Error is %08x\n", GetLastError());
+		}
+		break;
 	case WM_COMMAND:
 		wmId    = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);

@@ -68,4 +68,12 @@
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="look.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="look.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
