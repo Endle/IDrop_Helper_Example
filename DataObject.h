@@ -2,6 +2,11 @@
 #include "ObjIdl.h"
 #include "stdafx.h"
 
+typedef struct {
+	FORMATETC fe;
+	STGMEDIUM stgm;
+} DATAENTRY;
+
 class CDataObject :
 	public IDataObject
 {
@@ -38,5 +43,8 @@ public:
 		*ppv = NULL;
 		return E_NOTIMPL;
 	}
+
+private:
+	DATAENTRY *m_data; // A hacky solution
 };
 
